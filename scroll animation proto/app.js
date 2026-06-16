@@ -139,6 +139,15 @@ window.addEventListener('scroll', () => {
             heroOverlayContent.style.pointerEvents = 'auto';
         }
     }
+
+    const aboutSection = document.getElementById('about');
+    if (aboutSection) {
+        const revealStart = 0.2;
+        const revealEnd = 0.42;
+        const sectionOpacity = Math.max(0, Math.min(1, (scrollFraction - revealStart) / (revealEnd - revealStart)));
+        aboutSection.style.opacity = sectionOpacity;
+        aboutSection.style.transform = `translateY(${Math.max(0, 40 - sectionOpacity * 40)}px)`;
+    }
     
     // Wake up animation loop on scroll
     startRenderLoop();
